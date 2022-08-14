@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Event-delegate</title>
+  </head>
+  <body>
+    <section>
+      <ul id="list-container">
+        <li class="item">Lorem , emsum, mafdkdakf</li>
+        <li class="item">Sua dlfkd fdjfkajf</li>
+        <li class="item">Poka ,mf akd ak</li>
+        <li class="item">Toakdf fdfdkfd f</li>
+        <li class="item">Marufdk dfkjdlf dfdll</li>
+        <li class="item">Waste dfkdf dfk</li>
+      </ul>
+      <button id="new-item">Add Item</button>
+    </section>
+    <script>
+        const listContainer = document.getElementById('list-container');/* use event delegate on the parent .  ekhane parent ke dhorte hobe , shudo item ke dhorle new item delete kora jabe na */
+        listContainer.addEventListener("click", function (event) {
+          event.target.parentNode.removeChild(event.target);/* ei line mukhosto kore felo */
+        });
+      const newItem = document.getElementById('new-item');
+      newItem.addEventListener('click',function () {
+        const listContainer = document.getElementById('list-container');
+        const li = document.createElement('li');
+        li.innerText = "Brand New Item Added";
+        listContainer.appendChild(li);
+      })
+    </script>
+  </body>
+</html>

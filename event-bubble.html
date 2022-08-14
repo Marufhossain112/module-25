@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Event Bubble</title>
+  </head>
+  <body id="body">
+    <h1>Exploring event Bubble</h1>
+    <section id="section-container">
+      <ul id="my-ul">
+        <li id="item-1">Lorem, ipsum.</li>
+        <li id="item-2">Laudantium, blanditiis.</li>
+        <li id="item-3">Totam, dolorum?</li>
+        <li id="item-4">Officiis, hic?</li>
+        <li id="item-5">Quod, accusantium.</li>
+        <li id="item-6">Nam, ab.</li>
+      </ul>
+    </section>
+  </body>
+
+  <script>
+    document
+      .getElementById("item-2")
+      .addEventListener("click", function (event) {
+        console.log("I am no-2 clicked");
+        event.stopPropagation(); /* will only execute the same level */
+        event.stopImmediatePropagation();/* will execute the exact item */
+      });
+    document.getElementById("item-2").addEventListener("click", function () {
+      console.log("I am no-3 clicked");
+    });
+    document.getElementById("item-2").addEventListener("click", function () {
+      console.log("I am no-4 clicked");
+    });
+    document.getElementById("item-2").addEventListener("click", function () {
+      console.log("I am no-5 clicked");
+    });
+    document.getElementById("my-ul").addEventListener("click", function () {
+      console.log("Ul clicked");
+    });
+    document
+      .getElementById("section-container")
+      .addEventListener("click", function () {
+        console.log("section clicked");
+      });
+    document.getElementById("body").addEventListener("click", function () {
+      console.log("body clicked");
+    });
+  </script>
+</html>
